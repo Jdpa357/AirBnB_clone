@@ -7,7 +7,7 @@ for other classes
 
 
 from datetime import datetime
-from uuid import uudi4
+from uuid import uuid4
 import models
 
 
@@ -25,8 +25,8 @@ class BaseModel:
         if "updated_at" in self.__dict__:
                 self.updated_at = datetime.strptime(self.updated_at,
                                                     "%Y-%m-%dT%H:%M:%S.%f")
-            if "__class__" in self.__dict__:
-                del self.__dict__["__class__"]
+        if "__class__" in self.__dict__:
+            del self.__dict__["__class__"]
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
