@@ -32,3 +32,23 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             models.storage.new(self)
+
+    def __str__(self):
+        """String representation of the object"""
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
+                                     self.__dict__)
+
+    def save(self):
+        """Updates the current instance """
+        self.updated_at = datetime.today()
+        models.storage.save()
+
+    def to_dict(self):
+        """Return a dictionary representation of the object."""
+        json_dict = {}
+        for key, value in self.__dict__.items():
+            json_dict[key] = value
+        json_dict['__class__'] = self.__class__.__name__
+        json_dict['created_at'] = self.created_at.isoformat()
+        json_dict['updated_at'] = self.updated_at.isoformat()
+        return json_dict
