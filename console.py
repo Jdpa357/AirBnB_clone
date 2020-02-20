@@ -6,7 +6,10 @@ of the Holberton BNB console
 
 import cmd
 import sys
+import json
+import readline
 import models
+import shlex
 from models.engine.file_storage import FileStorage
 from models.city import City
 from models.user import User
@@ -40,6 +43,7 @@ class HBNBCommand(cmd.Cmd):
         and saves it to a JSON file
         Usage: create <class name>
         """
+        args = arg.split(" ")
         if not args[0]:
             print("** class name missing **")
             pass
@@ -104,6 +108,7 @@ class HBNBCommand(cmd.Cmd):
         based or not on the class name
         Usage: all <class name>
         """
+        models.storage.reload()
         if len(arg) < 1:
             all_items = []
             for value in FileStorage._FileStorage__objects.values():
