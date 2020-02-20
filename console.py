@@ -25,6 +25,9 @@ class HBNBCommand(cmd.Cmd):
     classes = {'BaseModel', 'User', 'State', 'City', 'Amenity', 'Place',
                'Review'}
 
+    def precmd(self, arg):
+        return(arg)
+
     def do_EOF(self, arg):
         """End of file command to exit the program"""
         print()
