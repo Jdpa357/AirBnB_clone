@@ -88,7 +88,7 @@ class HBNBCommand(cmd.Cmd):
         Usage: destroy <class name> <id>
         """
         if len(arg) < 1:
-            print("** class name is missing **")
+            print("** class name missing **")
             pass
         else:
             arg = arg.split(' ')
