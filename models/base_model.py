@@ -14,6 +14,8 @@ import models
 class BaseModel:
     """Template class for other classes to inherit"""
 
+    __instances = 0
+
     def __init__(self, *args, **kwargs):
         """Initialization of class"""
         self.id = str(uuid.uuid4())
@@ -30,6 +32,7 @@ class BaseModel:
                     self.__dict__[key] = value
         else:
             models.storage.new(self)
+        type(self).__instances += 1
 
     def __str__(self):
         """String representation of the object"""
@@ -50,3 +53,7 @@ class BaseModel:
         json_dict['created_at'] = self.created_at.isoformat()
         json_dict['updated_at'] = self.updated_at.isoformat()
         return json_dict
+
+    @classmethod
+    def count(cls):
+        return cls.__instances
