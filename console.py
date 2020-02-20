@@ -28,19 +28,17 @@ class HBNBCommand(cmd.Cmd):
     def precmd(self, arg):
         return(arg)
 
-    def do_EOF(self, arg):
-        """End of file command to exit the program"""
-        print("")
+    def do_EOF(self, line):
+        """Executes the EOF (Ctrl -D/ Ctrl-Z)"""
         return True
 
-    def do_quit(self, arg):
+    def do_quit(self, line):
         """Quit command to exit the program"""
         return True
 
-    def emptyLine(self):
-        """Returns a new line of the console or repeats the last
-        command passed to the prompt"""
-        return ""
+    def emptyline(self):
+        """empty line """
+        pass
 
     def do_create(self, arg):
         """
