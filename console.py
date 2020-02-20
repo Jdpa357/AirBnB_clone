@@ -19,6 +19,7 @@ from models.review import Review
 from models.state import State
 from models.amenity import Amenity
 
+
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
     classes = {'BaseModel', 'User', 'State', 'City', 'Amenity', 'Place',
