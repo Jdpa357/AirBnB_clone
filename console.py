@@ -27,6 +27,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, arg):
         """End of file command to exit the program"""
+        print()
         return True
 
     def do_quit(self, arg):
@@ -36,7 +37,7 @@ class HBNBCommand(cmd.Cmd):
     def emptyLine(self):
         """Returns a new line of the console or repeats the last
         command passed to the prompt"""
-        pass
+        return ""
 
     def do_create(self, arg):
         """
